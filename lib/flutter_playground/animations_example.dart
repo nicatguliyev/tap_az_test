@@ -73,7 +73,7 @@ class Animation3State extends State<Animation3> {
                     height: height,
                     width: 0.75 * width,
                     color: Colors.green,
-                    child: MenuScreen(),
+                    child: const MenuScreen(),
                   ),
                   Container(
                       height: height,
@@ -86,7 +86,7 @@ class Animation3State extends State<Animation3> {
                                 title: const Text("Tap.az"),
                                 centerTitle: true,
                                 leading: IconButton(
-                                  icon: Icon(Icons.menu),
+                                  icon: const Icon(Icons.menu),
                                   onPressed: () {
                                     setState(() {
                                       if (isOpened) {
