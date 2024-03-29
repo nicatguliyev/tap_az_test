@@ -54,8 +54,7 @@ class Animation3State extends State<Animation3> {
                   (isOpened == true &&
                       (details.primaryDelta! < -0.5 ||
                           details.primaryDelta! > 0.5))) {
-                updatedX =
-                    details.globalPosition.dx + details.primaryDelta!;
+                updatedX = details.globalPosition.dx + details.primaryDelta!;
               }
             }
           });
@@ -70,11 +69,10 @@ class Animation3State extends State<Animation3> {
               child: Row(
                 children: [
                   Container(
-                    height: height,
-                    width: 0.75 * width,
-                    color: Colors.green,
-                    child: const MenuScreen(),
-                  ),
+                      height: height,
+                      width: 0.75 * width,
+                      color: Colors.white,
+                      child:  MenuScreen(),),
                   Container(
                       height: height,
                       width: width,
