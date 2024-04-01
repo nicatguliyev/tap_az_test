@@ -12,10 +12,22 @@ class MenuScreen extends StatefulWidget {
 }
 
 class MenuScreenState extends State<MenuScreen> {
-  final menuItems = [
-    MenuItemModel(icon: const Icon(Icons.favorite_outline), name: "Favorites"),
-    MenuItemModel(icon: const Icon(Icons.access_alarm), name: "Access"),
-    MenuItemModel(icon: const Icon(Icons.add), name: "Elan Yerləşdir")
+  final menuItems1 = [
+    MenuItemModel(
+        icon: const Icon(Icons.account_circle_rounded), name: "Giriş"),
+    MenuItemModel(
+        icon: const Icon(Icons.my_library_books_rounded),
+        name: "Mənim elanlarım"),
+    MenuItemModel(
+        icon: const Icon(Icons.add_circle_rounded), name: "Elan Yerləşdir")
+  ];
+
+  final menuItems2 = [
+    MenuItemModel(
+        icon: const Icon(Icons.brightness_3_outlined), name: "Tətbiq rejimi"),
+    MenuItemModel(
+        icon: const Icon(Icons.language_outlined), name: "Azərbaycan"),
+    MenuItemModel(icon: const Icon(Icons.phone_android_outlined), name: "Əlaqə")
   ];
 
   @override
@@ -26,10 +38,16 @@ class MenuScreenState extends State<MenuScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ListView.separated(
+              padding: const EdgeInsets.only(top: 50),
               shrinkWrap: true,
               itemBuilder: (context, index) {
-                return MenuListItem(
-                  menuItemModel: menuItems[index],
+                return GestureDetector(
+                  onTap: () {
+                    print(index);
+                  },
+                  child: MenuListItem(
+                    menuItemModel: menuItems1[index],
+                  ),
                 );
               },
               separatorBuilder: (context, index) {
@@ -38,7 +56,7 @@ class MenuScreenState extends State<MenuScreen> {
                   height: 0.5,
                 );
               },
-              itemCount: menuItems.length),
+              itemCount: menuItems1.length),
           Container(
             color: const Color.fromARGB(255, 206, 206, 206),
             height: 0.5,
@@ -48,7 +66,8 @@ class MenuScreenState extends State<MenuScreen> {
           ),
           const Text(
             "Yardım",
-            style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 98, 98, 98)),
+            style:
+                TextStyle(fontSize: 18, color: Color.fromARGB(255, 98, 98, 98)),
           ),
           const SizedBox(
             height: 20,
@@ -58,11 +77,17 @@ class MenuScreenState extends State<MenuScreen> {
             height: 0.5,
           ),
           ListView.separated(
-            padding:  EdgeInsets.zero,
+              padding: EdgeInsets.zero,
               shrinkWrap: true,
               itemBuilder: (context, index) {
-                return MenuListItem(
-                  menuItemModel: menuItems[index],
+                return GestureDetector(
+                  
+                  onTap: () {
+                    print(menuItems2[index].name);
+                  },
+                  child: MenuListItem(
+                    menuItemModel: menuItems2[index],
+                  ),
                 );
               },
               separatorBuilder: (context, index) {
@@ -71,10 +96,9 @@ class MenuScreenState extends State<MenuScreen> {
                   height: 0.5,
                 );
               },
-              itemCount: menuItems.length),
+              itemCount: menuItems2.length),
         ],
       ),
     );
   }
 }
-

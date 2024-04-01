@@ -15,7 +15,7 @@ class MenuListItem extends StatelessWidget {
           const SizedBox(
             width: 15,
           ),
-          Text(menuItemModel.name, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),)
+          Text(menuItemModel.name, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),)
         ],
       ),
     );

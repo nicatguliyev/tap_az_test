@@ -69,36 +69,48 @@ class Animation3State extends State<Animation3> {
               child: Row(
                 children: [
                   Container(
-                      height: height,
-                      width: 0.75 * width,
-                      color: Colors.white,
-                      child:  MenuScreen(),),
+                    height: height,
+                    width: 0.75 * width,
+                    color: Colors.white,
+                    child: const MenuScreen(),
+                  ),
                   Container(
-                      height: height,
                       width: width,
                       color: Colors.red,
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            AppBar(
-                                title: const Text("Tap.az"),
-                                centerTitle: true,
-                                leading: IconButton(
-                                  icon: const Icon(Icons.menu),
-                                  onPressed: () {
-                                    setState(() {
-                                      if (isOpened) {
-                                        updatedX = 0.0;
-                                        isOpened = false;
-                                      } else {
-                                        updatedX = 0.75 * width;
-                                        isOpened = true;
-                                      }
-                                    });
-                                  },
-                                ))
-                          ],
-                        ),
+                      child: Column(
+                        children: [
+                          AppBar(
+                              title: const Text("Tap.az"),
+                              centerTitle: true,
+                              leading: IconButton(
+                                icon: const Icon(Icons.menu),
+                                onPressed: () {
+                                  setState(() {
+                                    if (isOpened) {
+                                      updatedX = 0.0;
+                                      isOpened = false;
+                                    } else {
+                                      updatedX = 0.75 * width;
+                                      isOpened = true;
+                                    }
+                                  });
+                                },
+                              )),
+                          SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 50,
+                                  color: Colors.grey,
+                                ),
+                                Container(
+                                  height: 100,
+                                  color: Colors.green,
+                                )
+                              ],
+                            ),
+                          )
+                        ],
                       ))
                 ],
               ),
