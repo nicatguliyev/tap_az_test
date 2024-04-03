@@ -8,15 +8,20 @@ class MenuListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Padding(
-      padding: const EdgeInsets.only(left: 8, top: 20, bottom: 20),
-      child: Row(
-        children: [
-          menuItemModel.icon,
-          const SizedBox(
-            width: 15,
-          ),
-          Text(menuItemModel.name, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),)
-        ],
+      padding: const EdgeInsets.all(8),
+      child: Container(
+        color: Colors.transparent,
+        height: 50,
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            menuItemModel.icon,
+            const SizedBox(
+              width: 15,
+            ),
+            Text(menuItemModel.name, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),)
+          ],
+        ),
       ),
     );
   }

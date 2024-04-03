@@ -37,26 +37,8 @@ class MenuScreenState extends State<MenuScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ListView.separated(
-              padding: const EdgeInsets.only(top: 50),
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    print(index);
-                  },
-                  child: MenuListItem(
-                    menuItemModel: menuItems1[index],
-                  ),
-                );
-              },
-              separatorBuilder: (context, index) {
-                return Container(
-                  color: const Color.fromARGB(255, 206, 206, 206),
-                  height: 0.5,
-                );
-              },
-              itemCount: menuItems1.length),
+          const SizedBox(height: 50,),
+           _menuListView(menuItems1),
           Container(
             color: const Color.fromARGB(255, 206, 206, 206),
             height: 0.5,
@@ -76,29 +58,35 @@ class MenuScreenState extends State<MenuScreen> {
             color: const Color.fromARGB(255, 206, 206, 206),
             height: 0.5,
           ),
-          ListView.separated(
-              padding: EdgeInsets.zero,
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  
-                  onTap: () {
-                    print(menuItems2[index].name);
-                  },
-                  child: MenuListItem(
-                    menuItemModel: menuItems2[index],
-                  ),
-                );
-              },
-              separatorBuilder: (context, index) {
-                return Container(
-                  color: const Color.fromARGB(255, 206, 206, 206),
-                  height: 0.5,
-                );
-              },
-              itemCount: menuItems2.length),
+           _menuListView(menuItems2)
         ],
       ),
     );
+  }
+
+  Container _seperator() {
+    return Container(
+      color: const Color.fromARGB(255, 206, 206, 206),
+      height: 0.5,
+    );
+  }
+
+  ListView _menuListView(List<MenuItemModel> menuItems) {
+    return ListView.separated(
+        padding: EdgeInsets.zero,
+        shrinkWrap: true,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+            },
+            child: MenuListItem(
+              menuItemModel: menuItems[index],
+            ),
+          );
+        },
+        separatorBuilder: (context, index) {
+         return _seperator();
+        },
+        itemCount: menuItems2.length);
   }
 }

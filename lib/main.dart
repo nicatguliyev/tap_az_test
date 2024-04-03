@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:tap_az_test/flutter_playground/animations_example.dart';
+import 'package:tap_az_test/flutter_playground/custom_scrollview_example.dart';
 import 'package:tap_az_test/flutter_playground/drawer_example.dart';
 import 'package:tap_az_test/flutter_playground/gesture_detector.dart';
 import 'package:tap_az_test/flutter_playground/listview_example.dart';
 import 'package:tap_az_test/flutter_playground/scrollview_example.dart';
+import 'package:tap_az_test/flutter_playground/test_home_screen.dart';
+import 'package:tap_az_test/pages/home_screen.dart';
 import 'package:tap_az_test/pages/main_screen.dart';
 import 'package:tap_az_test/pages/menu_screen.dart';
 
@@ -16,7 +19,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const  MaterialApp(
+    return    const  MaterialApp(
       home:  MainScreen(),
     );
   }
