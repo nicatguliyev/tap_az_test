@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tap_az_test/flutter_playground/test_slider.dart';
 
 class HomeScreen extends StatefulWidget {
   final VoidCallback onPressed;
@@ -23,12 +24,11 @@ class HomeScreenState extends State<HomeScreen> {
           centerTitle: true,
         ),
         body: CustomScrollView(
+          physics: const ClampingScrollPhysics(),
           slivers: [
             SliverAppBar(
-              expandedHeight: 100,
-              flexibleSpace: Container(
-                color: Colors.green,
-              ),
+              expandedHeight: 150,
+              flexibleSpace: TestSlider(),
               floating: false,
             ),
             SliverAppBar(
@@ -38,12 +38,10 @@ class HomeScreenState extends State<HomeScreen> {
               ),
               floating: true,
             ),
-            SliverToBoxAdapter(
-              child: Container(
-                height: 1000,
-                color: Colors.red,
-              ),
-            )
+            SliverList.builder(itemBuilder: (context, index) {
+              return Center(child: Text("$index"),);
+            },
+            itemCount: 200,)
           ],
         ));
   }
