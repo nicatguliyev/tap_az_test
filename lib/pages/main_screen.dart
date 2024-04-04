@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:tap_az_test/pages/home_screen.dart';
 import 'package:tap_az_test/pages/menu_screen.dart';
 
@@ -19,8 +18,20 @@ class MainScreenState extends State<MainScreen> {
   var isOpened = false;
   var delta = 0.0;
   var isVertialScrolled = false;
-
   var duration = const Duration(milliseconds: 100);
+
+  void toogleMenu(double width) {
+    setState(() {
+      if (isOpened) {
+        updatedX = 0.0;
+        isOpened = false;
+      } else {
+        updatedX = 0.75 * width;
+        isOpened = true;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -28,7 +39,6 @@ class MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: GestureDetector(
         onVerticalDragUpdate: (details) => {},
-        onTap: () => {},
         onHorizontalDragStart: (details) {
           setState(() {
             startedX = details.globalPosition.dx;
@@ -36,29 +46,12 @@ class MainScreenState extends State<MainScreen> {
         },
         onHorizontalDragEnd: (details) {
           setState(() {
-            if (updatedX < 0.35 * width) {
-              updatedX = 0.0;
-            } else {
-              updatedX = 0.75 * width;
-            }
-            if (updatedX == 0.75 * width) {
-              isOpened = true;
-            }
-            if (updatedX == 0.0) {
-              isOpened = false;
-            }
+            _handleHorizontalDragEnd(details, width);
           });
         },
         onHorizontalDragUpdate: (details) {
           setState(() {
-            if (details.globalPosition.dx <= 0.75 * width) {
-              if (startedX <= 30 ||
-                  (isOpened == true &&
-                      (details.primaryDelta! < -0.5 ||
-                          details.primaryDelta! > 0.5))) {
-                updatedX = details.globalPosition.dx + details.primaryDelta!;
-              }
-            }
+            _handleHorizontalDragUpdate(details, width);
           });
         },
         child: Stack(children: [
@@ -76,10 +69,16 @@ class MainScreenState extends State<MainScreen> {
                     color: Colors.white,
                     child: const MenuScreen(),
                   ),
-                    //const  Home Screen()
-
-                    Container(height: height, width: width , color: Colors.green,)
-                
+                  Container(
+                    width: width,
+                    height: height,
+                    color: Colors.red,
+                    child: HomeScreen(
+                      onPressed: () => {
+                        toogleMenu(width)
+                      },
+                    ),
+                  )
                 ],
               ),
             ),
@@ -88,46 +87,29 @@ class MainScreenState extends State<MainScreen> {
       ),
     );
   }
+
+  void _handleHorizontalDragUpdate(DragUpdateDetails details, double width) {
+    if (details.globalPosition.dx <= 0.75 * width) {
+      if (startedX <=
+              30 || // Eger menu baglidirsa drag  yalniz ekranin dibinden isleyecek. Ekranin ortasindan yox
+          (isOpened == true &&
+              (details.primaryDelta! < -0.5 || details.primaryDelta! > 0.5))) {
+        updatedX = details.globalPosition.dx + details.primaryDelta!;
+      }
+    }
+  }
+
+  void _handleHorizontalDragEnd(DragEndDetails details, double width) {
+    if (updatedX < 0.35 * width) {
+      updatedX = 0.0;
+    } else {
+      updatedX = 0.75 * width;
+    }
+    if (updatedX == 0.75 * width) {
+      isOpened = true;
+    }
+    if (updatedX == 0.0) {
+      isOpened = false;
+    }
+  }
 }
-
-
-
-  // Container(
-  //                     width: width,
-  //                      height: height,
-  //                     color: Colors.red,
-  //                     child: Column(
-  //                       children: [
-  //                         AppBar(
-  //                             title: const Text("Tap.az"),
-  //                             centerTitle: true,
-  //                             leading: IconButton(
-  //                               icon: const Icon(Icons.menu),
-  //                               onPressed: () {
-  //                                 setState(() {
-  //                                   if (isOpened) {
-  //                                     updatedX = 0.0;
-  //                                     isOpened = false;
-  //                                   } else {
-  //                                     updatedX = 0.75 * width;
-  //                                     isOpened = true;
-  //                                   }
-  //                                 });
-  //                               },
-  //                             )),
-  //                         SingleChildScrollView(
-  //                           child: Column(
-  //                             children: [
-  //                               Container(
-  //                                 height: 50,
-  //                                 color: Colors.grey,
-  //                               ),
-  //                               Container(
-  //                                 height: 500,
-  //                                 color: Colors.green,
-  //                               )
-  //                             ],
-  //                           ),
-  //                         )
-  //                       ],
-  //                     ))
