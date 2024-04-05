@@ -33,20 +33,7 @@ class HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         extendBody: true,
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: widget.onPressed,
-          ),
-          title: const Text("Tap.az"),
-          centerTitle: true,
-        ),
-        body: CustomScrollView(
-          physics: const ClampingScrollPhysics(),
-          slivers: [
-            SliverAppBar(
-              pinned: true,
-              flexibleSpace: Container(
+          bottom: PreferredSize(preferredSize: Size.fromHeight(50), child:  Container(
                 height: 50,
                 color: Colors.white,
                 child: Row(
@@ -84,8 +71,19 @@ class HomeScreenState extends State<HomeScreen> {
                     )
                   ],
                 ),
-              ),
-            ),
+              ),),
+          backgroundColor: Colors.white,
+          toolbarHeight: 50,
+          leading: IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: widget.onPressed,
+          ),
+          title: const Text("Tap.az"),
+          centerTitle: true,
+        ),
+        body: CustomScrollView(
+          physics: const ClampingScrollPhysics(),
+          slivers: [
             SliverAppBar(
               expandedHeight: 150,
               flexibleSpace: TestSlider(),
