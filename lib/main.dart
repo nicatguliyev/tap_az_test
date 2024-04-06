@@ -5,6 +5,7 @@ import 'package:tap_az_test/flutter_playground/drawer_example.dart';
 import 'package:tap_az_test/flutter_playground/gesture_detector.dart';
 import 'package:tap_az_test/flutter_playground/listview_example.dart';
 import 'package:tap_az_test/flutter_playground/scrollview_example.dart';
+import 'package:tap_az_test/flutter_playground/test_app_bar.dart';
 import 'package:tap_az_test/flutter_playground/test_home_screen.dart';
 import 'package:tap_az_test/flutter_playground/test_slider.dart';
 import 'package:tap_az_test/pages/home_screen.dart';

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tap_az_test/flutter_playground/test_search_textfield.dart';
 import 'package:tap_az_test/flutter_playground/test_slider.dart';
+import 'package:tap_az_test/items/filter_button.dart';
 import 'package:tap_az_test/items/home_category_item.dart';
+import 'package:tap_az_test/items/search_textfield.dart';
 import 'package:tap_az_test/model/CategoryItemModel.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -33,41 +35,21 @@ class HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         extendBody: true,
         appBar: AppBar(
-          bottom: PreferredSize(preferredSize: Size.fromHeight(50), child:  Container(
-                height: 50,
+          scrolledUnderElevation: 0,
+          bottom: PreferredSize(preferredSize: const Size.fromHeight(60), child:  Container(
+                height: 60,
                 color: Colors.white,
-                child: Row(
+                child: const Row(
                   children: [
-                     const Expanded(
+                      Expanded(
                       child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: TextField(
-                          cursorColor: Colors.grey,
-                          style: TextStyle(fontSize: 14),
-                          decoration: InputDecoration(
-                              floatingLabelBehavior:
-                                  FloatingLabelBehavior.never,
-                              contentPadding: EdgeInsets.symmetric(
-                                  vertical: 4, horizontal: 4),
-                              labelText: "Enter Your Text",
-                              filled: true,
-                              fillColor: Color.fromARGB(74, 222, 222, 222),
-                               enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Color.fromARGB(255, 222, 222, 222), width: 1)),
-                               focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Color.fromARGB(255, 222, 222, 222), width: 1)),
-                              border: OutlineInputBorder()),
-                        ),
+                        padding: EdgeInsets.only(left: 16, right: 8, top: 8, bottom: 8 ),
+                        child: SearchTextField(),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 8),
-                      child: Container(
-                        height: 34,
-                        width: 34,
-                        decoration:  BoxDecoration(
-                             color: const Color.fromARGB(74, 222, 222, 222),
-                            borderRadius: const BorderRadius.all(Radius.circular(5)),
-                            border: Border.all(color: const Color.fromARGB(255, 222, 222, 222), width:  1, )),
-                      ),
+                      padding:  EdgeInsets.only(right: 16),
+                      child: FilterButton(),
                     )
                   ],
                 ),
@@ -75,10 +57,10 @@ class HomeScreenState extends State<HomeScreen> {
           backgroundColor: Colors.white,
           toolbarHeight: 50,
           leading: IconButton(
-            icon: const Icon(Icons.menu),
+            icon: const Icon(Icons.menu, size: 32, color: Color.fromARGB(255, 255, 123, 0),),
             onPressed: widget.onPressed,
           ),
-          title: const Text("Tap.az"),
+          title: const Text("tap.az", style: TextStyle(color: Color.fromARGB(255, 255, 123, 0), fontSize: 26, fontWeight: FontWeight.bold), ),
           centerTitle: true,
         ),
         body: CustomScrollView(
