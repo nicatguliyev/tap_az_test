@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tap_az_test/flutter_playground/test_http_request.dart';
 import 'package:tap_az_test/flutter_playground/test_search_textfield.dart';
 import 'package:tap_az_test/flutter_playground/test_slider.dart';
 import 'package:tap_az_test/items/filter_button.dart';
@@ -31,36 +32,57 @@ class HomeScreenState extends State<HomeScreen> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    TestRequest request = TestRequest();
+    request.getRequest();
+  }
+
+  @override
   Widget build(Object context) {
     return Scaffold(
         extendBody: true,
         appBar: AppBar(
           scrolledUnderElevation: 0,
-          bottom: PreferredSize(preferredSize: const Size.fromHeight(60), child:  Container(
-                height: 60,
-                color: Colors.white,
-                child: const Row(
-                  children: [
-                      Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 16, right: 8, top: 8, bottom: 8 ),
-                        child: SearchTextField(),
-                      ),
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(60),
+            child: Container(
+              height: 60,
+              color: Colors.white,
+              child: const Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          left: 16, right: 8, top: 8, bottom: 8),
+                      child: SearchTextField(),
                     ),
-                    Padding(
-                      padding:  EdgeInsets.only(right: 16),
-                      child: FilterButton(),
-                    )
-                  ],
-                ),
-              ),),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(right: 16),
+                    child: FilterButton(),
+                  )
+                ],
+              ),
+            ),
+          ),
           backgroundColor: Colors.white,
           toolbarHeight: 50,
           leading: IconButton(
-            icon: const Icon(Icons.menu, size: 32, color: Color.fromARGB(255, 255, 123, 0),),
+            icon: const Icon(
+              Icons.menu,
+              size: 32,
+              color: Color.fromARGB(255, 255, 123, 0),
+            ),
             onPressed: widget.onPressed,
           ),
-          title: const Text("tap.az", style: TextStyle(color: Color.fromARGB(255, 255, 123, 0), fontSize: 26, fontWeight: FontWeight.bold), ),
+          title: const Text(
+            "tap.az",
+            style: TextStyle(
+                color: Color.fromARGB(255, 255, 123, 0),
+                fontSize: 26,
+                fontWeight: FontWeight.bold),
+          ),
           centerTitle: true,
         ),
         body: CustomScrollView(

@@ -7,6 +7,8 @@ import 'package:tap_az_test/flutter_playground/listview_example.dart';
 import 'package:tap_az_test/flutter_playground/scrollview_example.dart';
 import 'package:tap_az_test/flutter_playground/test_app_bar.dart';
 import 'package:tap_az_test/flutter_playground/test_home_screen.dart';
+import 'package:tap_az_test/flutter_playground/test_http_request.dart';
+import 'package:tap_az_test/flutter_playground/test_image.dart';
 import 'package:tap_az_test/flutter_playground/test_slider.dart';
 import 'package:tap_az_test/pages/home_screen.dart';
 import 'package:tap_az_test/pages/main_screen.dart';
