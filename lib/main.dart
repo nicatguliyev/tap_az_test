@@ -9,7 +9,9 @@ import 'package:tap_az_test/flutter_playground/test_app_bar.dart';
 import 'package:tap_az_test/flutter_playground/test_home_screen.dart';
 import 'package:tap_az_test/flutter_playground/test_http_request.dart';
 import 'package:tap_az_test/flutter_playground/test_image.dart';
+import 'package:tap_az_test/flutter_playground/test_product_gridview.dart';
 import 'package:tap_az_test/flutter_playground/test_slider.dart';
+import 'package:tap_az_test/items/product_card_item.dart';
 import 'package:tap_az_test/pages/home_screen.dart';
 import 'package:tap_az_test/pages/main_screen.dart';
 import 'package:tap_az_test/pages/menu_screen.dart';
@@ -23,8 +25,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return   const   MaterialApp(
-      home:  MainScreen(),
+    return      MaterialApp(
+      home:  TestProductGridview(),
     );
   }
 }
